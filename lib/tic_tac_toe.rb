@@ -8,6 +8,25 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
+def turn_count(array)
+  counter = 0
+  array.each do |item|
+    if item == "X" || item == "O"
+      counter += 1
+    end
+  end
+  return counter
+end
+
+def current_player(array)
+  counts = turn_count(array)
+  if counts == 0 || ((counts % 2) == 0)
+    return "X"
+  else
+    return "O"
+  end
+end
+
 def input_to_index(input)
   index = input.to_i - 1
   return index
@@ -49,24 +68,7 @@ def turn(array)
   end
 end
 
-def turn_count(array)
-  counter = 0
-  array.each do |item|
-    if item == "X" || item == "O"
-      counter += 1
-    end
-  end
-  return counter
-end
 
-def current_player(array)
-  counts = turn_count(array)
-  if counts == 0 || ((counts % 2) == 0)
-    return "X"
-  else
-    return "O"
-  end
-end
 
 def won?(array)
   WIN_COMBINATIONS.detect do |win_combination|
