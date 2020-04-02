@@ -8,9 +8,9 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def turn_count(array)
+def turn_count
   counter = 0
-  array.each do |item|
+  @board.each do |item|
     if item == "X" || item == "O"
       counter += 1
     end
@@ -18,8 +18,8 @@ def turn_count(array)
   return counter
 end
 
-def current_player(array)
-  counts = turn_count(array)
+def current_player
+  counts = turn_count
   if counts == 0 || ((counts % 2) == 0)
     return "X"
   else
